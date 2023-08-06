@@ -30,7 +30,10 @@ function CommentModal({ data }) {
             comments: [...data?.comments, { email: modalEmail, comment: modalComment }],
         };
         // console.log(commentData);
-        patchData(`https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`, commentData);
+        patchData(
+          `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`,
+          commentData
+        );
         modalEmailRef.current.value = "";
         modalCommentRef.current.value = "";
         // new Swal.fire(

@@ -19,9 +19,9 @@ const AllBlogs = () => {
 
     useEffect(() => {
         if (category) {
-            getData(`https://bloge-server.vercel.app/api/v1/blogs?category=${category}`);
+            getData(`https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?category=${category}`);
         } else {
-            getData(`https://bloge-server.vercel.app/api/v1/blogs`);
+            getData(`https://bloge-server-devsobuj910.vercel.app/api/v1/blogs`);
         }
     }, []);
     // console.log(data);

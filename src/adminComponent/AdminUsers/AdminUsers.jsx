@@ -13,35 +13,39 @@ const AdminUsers = () => {
     const [sortOrder, setSortOrder] = useState("asc");
     const { data, getData, error, loading, patchData, deleteData, success } = useFetch();
     useEffect(() => {
-        getData("https://bloge-server.vercel.app/api/v1/users?role=user");
+      getData(
+        "https://bloge-server-devsobuj910.vercel.app/api/v1/users?role=user"
+      );
     }, []);
 
     let content;
-    const searchUserHandler = (query) => {
-        if (query) {
-            setSearchOption(query);
-        }
-        if (query === "") {
-            setSearchOption(false);
-        }
+    const searchUserHandler = query => {
+      if (query) {
+        setSearchOption(query);
+      }
+      if (query === "") {
+        setSearchOption(false);
+      }
     };
-    const handleUserDelete = (userId) => {
-        swal({
-            title: "Are you sure?",
-            text: "If you proceed, this user will be permanently removed!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        }).then((willDelete) => {
-            if (willDelete) {
-                deleteData(`https://bloge-server.vercel.app/api/v1/users?_id=${userId}`);
-                swal("Poof! The user has been removed!", {
-                    icon: "success",
-                });
-            } else {
-                swal("The user is safe!");
-            }
-        });
+    const handleUserDelete = userId => {
+      swal({
+        title: "Are you sure?",
+        text: "If you proceed, this user will be permanently removed!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then(willDelete => {
+        if (willDelete) {
+          deleteData(
+            `https://bloge-server-devsobuj910.vercel.app/api/v1/users?_id=${userId}`
+          );
+          swal("Poof! The user has been removed!", {
+            icon: "success",
+          });
+        } else {
+          swal("The user is safe!");
+        }
+      });
     };
 
     const handleSort = () => {

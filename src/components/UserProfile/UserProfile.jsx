@@ -17,19 +17,23 @@ const UserProfile = () => {
     // console.log(data);
 
     if (user?.email) {
-        axios
-            .get(`https://bloge-server.vercel.app/api/v1/users?_id=${userId}`)
-            .then((res) => {
-                const resData = res.data[0];
-                setUserDetail(resData);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+      axios
+        .get(
+          `https://bloge-server-devsobuj910.vercel.app/api/v1/users?_id=${userId}`
+        )
+        .then(res => {
+          const resData = res.data[0];
+          setUserDetail(resData);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
 
     if (user?.email) {
-        getData(`https://bloge-server.vercel.app/api/v1/blogs?email=${userDetail?.email}`);
+      getData(
+        `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?email=${userDetail?.email}`
+      );
     }
     //   console.log(userDetail);
 

@@ -14,19 +14,21 @@ const AdminDashboard = () => {
     const [userData, setUserData] = useState();
     const navigate = useNavigate()
     useEffect(() => {
-        getData(`https://bloge-server.vercel.app/api/v1/blogs`);
+      getData(`https://bloge-server-devsobuj910.vercel.app/api/v1/blogs`);
     }, []);
 
     useEffect(() => {
-        axios
-            .get(`https://bloge-server.vercel.app/api/v1/users?role=user`)
-            .then((res) => {
-                const resData = res.data;
-                setUserData(resData);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+      axios
+        .get(
+          `https://bloge-server-devsobuj910.vercel.app/api/v1/users?role=user`
+        )
+        .then(res => {
+          const resData = res.data;
+          setUserData(resData);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }, []);
 
     console.log(userData);

@@ -18,23 +18,28 @@ const Settings = () => {
     const deleteUserRef = useRef();
 
     if (user?.email) {
-        getData(`https://bloge-server.vercel.app/api/v1/users?email=${user?.email}`);
+      getData(
+        `https://bloge-server-devsobuj910.vercel.app/api/v1/users?email=${user?.email}`
+      );
     }
     // console.log(data[0]);
 
-    const handleProfileImage = async (e) => {
-        setDataLoading(true);
-        const image = e.target.files[0];
-        const formData = new FormData();
-        formData.set("key", "5ef8b75ebd5911a1ca073db6b222856d");
-        formData.append("image", image);
+    const handleProfileImage = async e => {
+      setDataLoading(true);
+      const image = e.target.files[0];
+      const formData = new FormData();
+      formData.set("key", "5ef8b75ebd5911a1ca073db6b222856d");
+      formData.append("image", image);
 
-        const imgUpload = await postData("https://api.imgbb.com/1/upload", formData);
-        if (imgUpload.status === 200) {
-            setDataLoading(false);
-            setImageUpload(imgUpload.data.data.url);
-            console.log(imageUpload);
-        }
+      const imgUpload = await postData(
+        "https://api.imgbb.com/1/upload",
+        formData
+      );
+      if (imgUpload.status === 200) {
+        setDataLoading(false);
+        setImageUpload(imgUpload.data.data.url);
+        console.log(imageUpload);
+      }
     };
 
     const updateNameRef = useRef();
@@ -42,50 +47,50 @@ const Settings = () => {
     const updatePassRef = useRef();
     // console.log(user?.email);
 
-    const handleUpdateUserData = (e) => {
-        e.preventDefault();
-        const updateNameValue = updateNameRef.current.value;
-        // const updateEmailValue = updateEmailRef.current.value;
-        //const updatePassValue = updatePassRef.current.value;
-        const img = imageUpload;
-        const updatedUsertData = {
-            name: updateNameValue,
-            img,
-        };
-        console.log(updatedUsertData);
-        if (user?.email) {
-            patchData(
-                `https://bloge-server.vercel.app/api/v1/users?email=${user?.email}`,
-                updatedUsertData
-            );
-        }
+    const handleUpdateUserData = e => {
+      e.preventDefault();
+      const updateNameValue = updateNameRef.current.value;
+      // const updateEmailValue = updateEmailRef.current.value;
+      //const updatePassValue = updatePassRef.current.value;
+      const img = imageUpload;
+      const updatedUsertData = {
+        name: updateNameValue,
+        img,
+      };
+      console.log(updatedUsertData);
+      if (user?.email) {
+        patchData(
+          `https://bloge-server-devsobuj910.vercel.app/api/v1/users?email=${user?.email}`,
+          updatedUsertData
+        );
+      }
 
-        updateNameRef.current.value = "";
-        // updateEmailRef.current.value = "";
-        updatePassRef.current.value = "";
-        // new Swal.fire(
-        //     'Your Profile Information is Updated!',
-        //     'success'
-        //   )
-        new Swal({
-            title: "Hurray!",
-            text: "Your Profile is successfully updated :)",
-            icon: "success",
-        });
+      updateNameRef.current.value = "";
+      // updateEmailRef.current.value = "";
+      updatePassRef.current.value = "";
+      // new Swal.fire(
+      //     'Your Profile Information is Updated!',
+      //     'success'
+      //   )
+      new Swal({
+        title: "Hurray!",
+        text: "Your Profile is successfully updated :)",
+        icon: "success",
+      });
     };
 
     const deleteUserHandler = async () => {
-        const deleteText = deleteUserRef.current.value;
-        if (deleteText === "DELETE") {
-            await deleteData(
-                `https://bloge-server.vercel.app/api/v1/users?email=${user?.email}`
-            );
-            await Swal.fire("Your Account is Deleted!", "success");
+      const deleteText = deleteUserRef.current.value;
+      if (deleteText === "DELETE") {
+        await deleteData(
+          `https://bloge-server-devsobuj910.vercel.app/api/v1/users?email=${user?.email}`
+        );
+        await Swal.fire("Your Account is Deleted!", "success");
 
-            logOut();
-        } else {
-            Swal.fire("Please type 'DELETE to delete your account'");
-        }
+        logOut();
+      } else {
+        Swal.fire("Please type 'DELETE to delete your account'");
+      }
     };
     return (
         <div className="settings container w-lg-75">

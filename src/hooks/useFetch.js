@@ -13,6 +13,7 @@ const useFetch = () => {
         //console.log(url);
         try {
             const res = await axios.get(url);
+            console.log(res.data, "this is all blog ");
             setData(res.data);
             setDataLoading(false);
         } catch (err) {

@@ -20,135 +20,169 @@ const SinglePost = () => {
     // const commentEmailRef = useRef();
     const commentRef = useRef();
 
-    const handleCategoryClick = (postCat) => {
-        // navigate('/allBlogs');
-        getData(`https://bloge-server.vercel.app/api/v1/blogs?category=${postCat}`);
+    const handleCategoryClick = postCat => {
+      // navigate('/allBlogs');
+      getData(
+        `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?category=${postCat}`
+      );
     };
     useEffect(() => {
-        getData(`https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`);
+      getData(
+        `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`
+      );
     }, []);
     // console.log(comments);
 
     if (user?.email) {
-        axios
-            .get(`https://bloge-server.vercel.app/api/v1/users?email=${user?.email}`)
-            .then((res) => {
-                const resData = res.data[0];
-                setUserDetail(resData);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+      axios
+        .get(
+          `https://bloge-server-devsobuj910.vercel.app/api/v1/users?email=${user?.email}`
+        )
+        .then(res => {
+          const resData = res.data[0];
+          setUserDetail(resData);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
 
     const {
-        _id,
-        like_count,
-        dislike_count,
-        comments,
-        title,
-        description,
-        category,
-        img,
-        name,
-        post,
-        email,
-        author,
-        createdAt,
-        updatedAt,
+      _id,
+      like_count,
+      dislike_count,
+      comments,
+      title,
+      description,
+      category,
+      img,
+      name,
+      post,
+      email,
+      author,
+      createdAt,
+      updatedAt,
     } = data[0] || {};
 
     // let likePost;
     // let disLikePost;
 
     const likeHandler = async (postId, email) => {
-        const like = [...like_count];
-        const disLike = [...dislike_count];
-        if (!like?.includes(email)) {
-            like?.push(email);
-            await patchData(`https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`, {
-                like_count: like,
-            });
-        } else {
-            const newLike = like?.filter((likeItem) => likeItem !== email);
-            await patchData(`https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`, {
-                like_count: newLike,
-            });
-        }
+      const like = [...like_count];
+      const disLike = [...dislike_count];
+      if (!like?.includes(email)) {
+        like?.push(email);
+        await patchData(
+          `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`,
+          {
+            like_count: like,
+          }
+        );
+      } else {
+        const newLike = like?.filter(likeItem => likeItem !== email);
+        await patchData(
+          `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`,
+          {
+            like_count: newLike,
+          }
+        );
+      }
 
-        if (disLike?.includes(email)) {
-            const newDisLike = disLike?.filter((disLikeItem) => disLikeItem !== email);
-            await patchData(`https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`, {
-                dislike_count: newDisLike,
-            });
-        }
-        window.location.reload();
+      if (disLike?.includes(email)) {
+        const newDisLike = disLike?.filter(
+          disLikeItem => disLikeItem !== email
+        );
+        await patchData(
+          `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`,
+          {
+            dislike_count: newDisLike,
+          }
+        );
+      }
+      window.location.reload();
     };
 
     const disLikeHandler = async (postId, email) => {
-        const like = [...like_count];
-        const disLike = [...dislike_count];
-        if (!disLike?.includes(email)) {
-            disLike?.push(email);
-            await patchData(`https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`, {
-                dislike_count: disLike,
-            });
-        } else {
-            const newDisLike = disLike?.filter((disLikeItem) => disLikeItem !== email);
-            await patchData(`https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`, {
-                dislike_count: newDisLike,
-            });
-        }
+      const like = [...like_count];
+      const disLike = [...dislike_count];
+      if (!disLike?.includes(email)) {
+        disLike?.push(email);
+        await patchData(
+          `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`,
+          {
+            dislike_count: disLike,
+          }
+        );
+      } else {
+        const newDisLike = disLike?.filter(
+          disLikeItem => disLikeItem !== email
+        );
+        await patchData(
+          `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`,
+          {
+            dislike_count: newDisLike,
+          }
+        );
+      }
 
-        if (like?.includes(email)) {
-            const newLike = like?.filter((likeItem) => likeItem !== email);
-            await patchData(`https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`, {
-                like_count: newLike,
-            });
-        }
-        window.location.reload();
+      if (like?.includes(email)) {
+        const newLike = like?.filter(likeItem => likeItem !== email);
+        await patchData(
+          `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`,
+          {
+            like_count: newLike,
+          }
+        );
+      }
+      window.location.reload();
     };
 
     const handleBlogDelete = () => {
-        swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this blog!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        }).then((willDelete) => {
-            if (willDelete) {
-                deleteData(`https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`);
-                swal("Poof! Your blog has been deleted!", {
-                    icon: "success",
-                });
-            } else {
-                swal("Your blog is safe!");
-            }
-        });
+      swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this blog!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then(willDelete => {
+        if (willDelete) {
+          deleteData(
+            `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`
+          );
+          swal("Poof! Your blog has been deleted!", {
+            icon: "success",
+          });
+        } else {
+          swal("Your blog is safe!");
+        }
+      });
     };
 
-    const handleComment = (e) => {
-        e.preventDefault();
-        const commentValue = commentRef.current.value;
-        const userCommentData = {
-            comments: [
-                ...comments,
-                { name: userDetail.name, email: userDetail.email, comment: commentValue },
-            ],
-        };
-        // console.log(userCommentData);
-        patchData(
-            `https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`,
-            userCommentData
-        );
+    const handleComment = e => {
+      e.preventDefault();
+      const commentValue = commentRef.current.value;
+      const userCommentData = {
+        comments: [
+          ...comments,
+          {
+            name: userDetail.name,
+            email: userDetail.email,
+            comment: commentValue,
+          },
+        ],
+      };
+      // console.log(userCommentData);
+      patchData(
+        `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`,
+        userCommentData
+      );
 
-        commentRef.current.value = "";
-        // new Swal.fire(
-        //     'Good job!',
-        //     'Your comment is added!',
-        //     'success'
-        //   )
+      commentRef.current.value = "";
+      // new Swal.fire(
+      //     'Good job!',
+      //     'Your comment is added!',
+      //     'success'
+      //   )
     };
     const content = post;
     return (

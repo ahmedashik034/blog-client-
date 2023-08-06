@@ -18,7 +18,9 @@ const UserPost = ({ userPost }) => {
             dangerMode: true,
         }).then((willDelete) => {
             if (willDelete) {
-                deleteData(`https://bloge-server.vercel.app/api/v1/blogs?_id=${userPost?._id}`);
+                deleteData(
+                  `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${userPost?._id}`
+                );
                 swal("Poof! Your blog has been deleted!", {
                     icon: "success",
                 });

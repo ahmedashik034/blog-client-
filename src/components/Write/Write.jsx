@@ -62,8 +62,8 @@ const Write = () => {
         };
         console.log(blogData);
         const blogUpload = await postData(
-            "https://bloge-server.vercel.app/api/v1/blogs",
-            blogData
+          "https://bloge-server-devsobuj910.vercel.app/api/v1/blogs",
+          blogData
         );
         titleRef.current.value = "";
         categoryRef.current.props.value.value = "";

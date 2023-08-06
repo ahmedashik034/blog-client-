@@ -22,82 +22,90 @@ const BlogEdit = () => {
     const { user } = useFirebase();
 
     useEffect(() => {
-        console.log("Getting data...");
-        getData(`https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`);
+      console.log("Getting data...");
+      getData(
+        `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`
+      );
     }, []);
 
     useEffect(() => {
-        if (data && data.length) {
-            // setContent(data[0].post);
-            setSelectedCategory({ label: data[0].category, value: data[0].category });
-        }
+      if (data && data.length) {
+        // setContent(data[0].post);
+        setSelectedCategory({
+          label: data[0].category,
+          value: data[0].category,
+        });
+      }
     }, [data]);
 
-    const handleImageUpload = async (e) => {
-        if (!e) {
-            return;
-        }
+    const handleImageUpload = async e => {
+      if (!e) {
+        return;
+      }
 
-        console.log(e);
-        setDataLoading(true);
-        const image = e;
-        const formData = new FormData();
-        formData.set("key", "5ef8b75ebd5911a1ca073db6b222856d");
-        formData.append("image", image);
+      console.log(e);
+      setDataLoading(true);
+      const image = e;
+      const formData = new FormData();
+      formData.set("key", "5ef8b75ebd5911a1ca073db6b222856d");
+      formData.append("image", image);
 
-        try {
-            const response = await postData("https://api.imgbb.com/1/upload", formData);
-            if (response.status === 200) {
-                setDataLoading(false);
-                setImageUrl(response.data.data.url);
-            }
-            console.log(response);
-            console.log(imageUrl);
-        } catch (error) {
-            console.error(error);
+      try {
+        const response = await postData(
+          "https://api.imgbb.com/1/upload",
+          formData
+        );
+        if (response.status === 200) {
+          setDataLoading(false);
+          setImageUrl(response.data.data.url);
         }
+        console.log(response);
+        console.log(imageUrl);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
-    const handleFormSubmit = async (e) => {
-        e.preventDefault();
-        const title = titleRef.current.value;
-        const category = selectedCategory.value;
-        const post = content;
-        const imageFile = imageInputRef.current?.files?.[0];
-        // const imageUrl = imageFile ? await handleImageUpload(imageFile) : data[0]?.img;
-        console.log(imageUrl);
-        const blogData = {
-            name: title,
-            post,
-            author: user?.displayName,
-            email: user?.email,
-            img: imageUrl,
-            category,
-        };
-        console.log(blogData);
-        try {
-            const response = await axios.patch(
-                `https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`,
-                blogData
-            );
-            if (response.status === 200) {
-                Swal.fire({
-                    title: "Hurray!",
-                    text: "Your blog is successfully updated :)",
-                    icon: "success",
-                });
-                titleRef.current.value = "";
-                setContent("");
-                setSelectedCategory(null);
-            }
-        } catch (error) {
-            console.error(error);
-            Swal.fire({
-                title: "Error!",
-                text: "There was an error updating your blog. Please try again later.",
-                icon: "error",
-            });
+    const handleFormSubmit = async e => {
+      e.preventDefault();
+      const title = titleRef.current.value;
+      const category = selectedCategory.value;
+      const post = content;
+      const imageFile = imageInputRef.current?.files?.[0];
+      // const imageUrl = imageFile ? await handleImageUpload(imageFile) : data[0]?.img;
+      console.log(imageUrl);
+      const blogData = {
+        name: title,
+        post,
+        author: user?.displayName,
+        email: user?.email,
+        img: imageUrl,
+        category,
+      };
+      console.log(blogData);
+      try {
+        const response = await axios.patch(
+          `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`,
+          blogData
+        );
+        if (response.status === 200) {
+          Swal.fire({
+            title: "Hurray!",
+            text: "Your blog is successfully updated :)",
+            icon: "success",
+          });
+          titleRef.current.value = "";
+          setContent("");
+          setSelectedCategory(null);
         }
+      } catch (error) {
+        console.error(error);
+        Swal.fire({
+          title: "Error!",
+          text: "There was an error updating your blog. Please try again later.",
+          icon: "error",
+        });
+      }
     };
 
     const handleCategoryChange = (selectedOption) => {

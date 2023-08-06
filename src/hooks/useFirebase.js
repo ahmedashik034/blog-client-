@@ -38,55 +38,55 @@ const useFirebase = (location) => {
     };
 
     const signInWithEmail = async (email, password, location) => {
-        await signInWithEmailAndPassword(auth, email, password)
-            .then((result) => {
-                setUser(result.user);
+      await signInWithEmailAndPassword(auth, email, password)
+        .then(result => {
+          setUser(result.user);
+          // setLoading(false);
+
+          // setLoading(true)
+          console.log(result.user);
+          axios
+            .get(
+              `https://bloge-server-devsobuj910.vercel.app/api/v1/users?email=${result.user?.email}`
+            )
+            .then(res => {
+              console.log(res);
+              // const resData = res?.data[0];
+
+              if (res?.data[0]?.role === "admin") {
                 // setLoading(false);
-
-                // setLoading(true)
-                console.log(result.user);
-                axios
-                    .get(
-                        `https://bloge-server.vercel.app/api/v1/users?email=${result.user?.email}`
-                    )
-                    .then((res) => {
-                        console.log(res);
-                        // const resData = res?.data[0];
-
-                        if (res?.data[0]?.role === "admin") {
-                            // setLoading(false);
-                            return navigate("/admin");
-                        }
-                        if (location?.state?.from) {
-                            setLoading(false);
-                            return navigate(location?.state?.from);
-                        } else {
-                            return navigate("/");
-                        }
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    });
+                return navigate("/admin");
+              }
+              if (location?.state?.from) {
+                setLoading(false);
+                return navigate(location?.state?.from);
+              } else {
+                return navigate("/");
+              }
             })
-            .catch((error) => {
-                console.log(error);
+            .catch(err => {
+              console.log(err);
             });
+        })
+        .catch(error => {
+          console.log(error);
+        });
     };
 
-    const signInWithGoogle = async (location) => {
-        await signInWithPopup(auth, googleProvider)
-            .then((result) => {
-                setUser(result.user);
-                setLoading(false);
-                if (location?.state?.from) {
-                    return navigate(location?.state?.from);
-                } else {
-                    return navigate("/");
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+    const signInWithGoogle = async location => {
+      await signInWithPopup(auth, googleProvider)
+        .then(result => {
+          setUser(result.user);
+          setLoading(false);
+          if (location?.state?.from) {
+            return navigate(location?.state?.from);
+          } else {
+            return navigate("/");
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
     };
 
     // const signInWithGithub = (location) => {
@@ -141,49 +141,51 @@ const useFirebase = (location) => {
     // };
 
     const logOut = () => {
-        return signOut(auth);
+      return signOut(auth);
     };
 
     // update user
 
-    const updateName = (name) => {
-        updateProfile(auth.currentUser, {
-            displayName: name,
+    const updateName = name => {
+      updateProfile(auth.currentUser, {
+        displayName: name,
+      })
+        .then(() => {
+          // Profile updated!
+          // ...
         })
-            .then(() => {
-                // Profile updated!
-                // ...
-            })
-            .catch((error) => {
-                // An error occurred
-                // ...
-            });
+        .catch(error => {
+          // An error occurred
+          // ...
+        });
     };
 
     // observer
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setLoading(true);
-            if (user) {
-                setUser(user);
-                setLoading(false);
-                // console.log(user);
-                axios
-                    .get(`https://bloge-server.vercel.app/api/v1/users?email=${user?.email}`)
-                    .then((res) => {
-                        const resData = res.data[0];
-                        setUserDetail(resData);
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    });
-            } else {
-                setUser({});
-                setLoading(false);
-            }
-        });
-        return () => unsubscribe;
+      const unsubscribe = onAuthStateChanged(auth, user => {
+        setLoading(true);
+        if (user) {
+          setUser(user);
+          setLoading(false);
+          // console.log(user);
+          axios
+            .get(
+              `https://bloge-server-devsobuj910.vercel.app/api/v1/users?email=${user?.email}`
+            )
+            .then(res => {
+              const resData = res.data[0];
+              setUserDetail(resData);
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        } else {
+          setUser({});
+          setLoading(false);
+        }
+      });
+      return () => unsubscribe;
     }, [auth]);
 
     // console.log(userDetail);

@@ -24,65 +24,67 @@ const AdminPosts = () => {
     //
     const { data, getData, error, dataLoading, patchData, deleteData, success } = useFetch();
     useEffect(() => {
-        getData("https://bloge-server.vercel.app/api/v1/blogs");
+      getData("https://bloge-server-devsobuj910.vercel.app/api/v1/blogs");
     }, []);
     // console.log(data);
-    const handleBlogDelete = (postId) => {
-        swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this blog!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        }).then((willDelete) => {
-            if (willDelete) {
-                deleteData(`https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`);
-                swal("Poof! Your blog has been deleted!", {
-                    icon: "success",
-                });
-            } else {
-                swal("Your blog is safe!");
-            }
-        });
+    const handleBlogDelete = postId => {
+      swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this blog!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then(willDelete => {
+        if (willDelete) {
+          deleteData(
+            `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`
+          );
+          swal("Poof! Your blog has been deleted!", {
+            icon: "success",
+          });
+        } else {
+          swal("Your blog is safe!");
+        }
+      });
     };
 
     // filter data by category
 
-    const handleCategoryClick = (postCat) => {
-        console.log(postCat);
-        const categoryFilteredData = data?.filter((post) => {
-            console.log(post?.category[0]);
-            return post?.category[0] === postCat;
-        });
-        setCategoryFilter(categoryFilteredData);
+    const handleCategoryClick = postCat => {
+      console.log(postCat);
+      const categoryFilteredData = data?.filter(post => {
+        console.log(post?.category[0]);
+        return post?.category[0] === postCat;
+      });
+      setCategoryFilter(categoryFilteredData);
     };
     console.log(categoryFilter);
 
     //handle search by date
-    const handleToDate = (e) => {
-        setToDate(e.target.value);
+    const handleToDate = e => {
+      setToDate(e.target.value);
     };
-    const handleFromDate = (e) => {
-        setFromDate(e.target.value);
-        setDisable(false);
+    const handleFromDate = e => {
+      setFromDate(e.target.value);
+      setDisable(false);
     };
 
-    const handleFilterSubmit = (e) => {
-        e.preventDefault();
-        // alert("todate"+ toDate + "from date" + fromDate);
+    const handleFilterSubmit = e => {
+      e.preventDefault();
+      // alert("todate"+ toDate + "from date" + fromDate);
 
-        axios
-            .get(
-                `https://bloge-server.vercel.app/api/v1/blogs?toDate=${toDate}&fromDate=${fromDate}`
-            )
+      axios
+        .get(
+          `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?toDate=${toDate}&fromDate=${fromDate}`
+        )
 
-            .then((res) => {
-                const resData = res.data;
-                setBlogsData(resData);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        .then(res => {
+          const resData = res.data;
+          setBlogsData(resData);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     };
 
     // console.log(blogsData);

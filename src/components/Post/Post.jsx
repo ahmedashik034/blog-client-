@@ -14,7 +14,9 @@ const Post = ({ post }) => {
     const handleCategoryClick = (postCat) => {
 
         // navigate('/allBlogs');
-        getData(`https://bloge-server.vercel.app/api/v1/blogs?category=${postCat}`);
+        getData(
+          `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?category=${postCat}`
+        );
     }
     const content = post?.post;
     return (
