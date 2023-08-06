@@ -8,7 +8,7 @@ const Posts = () => {
   const { data, getData, error, loading } = useFetch();
 
   useEffect(() => {
-    getData(`https://bloge-server-devsobuj910.vercel.app/api/v1/blogs`);
+    getData(`https://bloge-server.vercel.app/api/v1/blogs`);
   }, []);
 
   // console.log(data);
