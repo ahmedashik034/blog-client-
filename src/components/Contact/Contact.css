@@ -1,0 +1,25 @@
+.contact {
+    height: 100vh;
+    background: url(../../images/about/about-main.png) top center no-repeat;
+    background-size: cover;
+}
+
+.contactDetail i {
+    color: teal;
+}
+
+.contactDetail h4 {
+    font-family: 'Josefin Sans', sans-serif;
+    color: #021843;
+}
+
+.contactDetail p {
+    font-size: 'Varela Round', sans-serif;
+}
+@media (max-width: 950px) {
+    .detailInfo {
+      margin-top: 45px;
+      margin-left: 15%;
+      margin-right: 15%;
+    }
+}

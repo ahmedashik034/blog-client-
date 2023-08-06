@@ -1,0 +1,45 @@
+.settingsWrapper{
+    flex: 9;
+    font-family: 'Lora', serif;
+}
+.settingsUpdateTitle{
+    font-size: 30px;
+    color: lightcoral;
+}
+.settingsDeleteTitle{
+    font-size: 12px;
+    cursor: pointer;
+}
+.settingsPP > img{
+    width: 70px;
+    height: 70px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+.settingsPpIcon{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    color: white;
+    background-color: lightcoral;
+    cursor: pointer;
+}
+.settingsForm > label{
+    font-size: 20px;
+    margin-top: 20px;
+}
+.settingsForm > input{
+    color: gray;
+    margin: 10px 0;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid lightgray;
+}
+.settingsSubmit{
+    background-color: teal;
+    align-self: center;
+    width: 150px;
+}
+.settingsSubmit:hover{
+    background-color: green;
+}

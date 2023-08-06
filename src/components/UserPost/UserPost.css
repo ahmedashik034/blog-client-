@@ -1,0 +1,45 @@
+.userPost{
+    flex: 9;
+}
+.userPostImg{
+    height: 340px;
+    object-fit: cover;
+}
+.userPostTitle{
+    font-family: 'Lora', serif;
+}
+.userPostEdit{
+    font-size: 25px;
+}
+.userPostIcon{
+    cursor: pointer;
+}
+.userPostIcon:first-child{
+    color: teal;
+}
+.userPostIcon:last-child{
+    color: tomato;
+}
+.userPostInfo{
+    font-size: 16px;
+    color: #b39656;
+    font-family: 'Varela Round', sans-serif;
+}
+.userPostDesc{
+    color: #666;
+    text-align: justify;
+    font-size: 18px;
+    line-height: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    cursor: pointer;
+}
+.userPostDesc::first-letter{
+    font-size: 30px;
+    margin-left: 20px;
+    font-weight: 600;
+    font-family: 'Lora', serif;
+}

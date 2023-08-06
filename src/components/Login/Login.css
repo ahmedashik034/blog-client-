@@ -1,0 +1,16 @@
+.login {
+    font-family: 'Lora', serif;
+    height: calc(100vh - 50px);
+    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5)), url(../../images/img-four.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.loginTitle{
+    font-size: 50px;
+}
+.loginBtn{
+    background-color: lightcoral;
+}
+.loginRegisterBtn{
+    background-color: teal;
+}

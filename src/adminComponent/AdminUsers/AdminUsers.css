@@ -1,0 +1,48 @@
+.manageBloggersTitle {
+    font-family: 'Lora', serif;
+    color: #021843;
+    font-weight: 550;
+}
+
+.actionIcon {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.userTable th,
+td {
+    text-align: center;
+}
+
+.actionDelete {
+    color: tomato;
+}
+
+.actionView {
+    color: teal;
+}
+
+table p {
+    font-size: 16px;
+}
+
+tr:nth-child(even) {
+    background-color: rgb(233, 232, 232);
+}
+
+.postAction {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.postAction:hover {
+    font-size: 20px;
+}
+
+.postActionDelete {
+    color: tomato;
+}
+
+.postActionOpen {
+    color: teal;
+}

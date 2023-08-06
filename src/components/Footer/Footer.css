@@ -1,0 +1,51 @@
+.footer {
+  overflow: hidden;
+  background-color: rgb(234, 229, 229);
+  font-size: 16px;
+}
+
+.footerTitle {
+  width: 80%;
+  border-top: 1px solid #a7a4a4;
+  border-bottom: 1px solid #a7a4a4;
+  font-family: 'Varela Round', sans-serif;
+  color: #021843;
+  line-height: 20px;
+}
+
+.footer a {
+  text-decoration: none;
+}
+.footerList{
+  list-style: none;
+}
+
+.footerListItem {
+  cursor: pointer;
+}
+
+.footer .footer-heading {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  font-size: 18px;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer .footer-links li a {
+  color: rgba(var(--color-white-rgb), 0.7);
+}
+
+.footerSocial {
+  width: 250px;
+}
+
+.footerIcon {
+  font-size: 20px;
+  cursor: pointer;
+}
+.footerIcon:hover {
+  color: teal;
+}

@@ -1,0 +1,61 @@
+.dashTitle {
+    font-family: 'Lora', serif;
+    color: #021843;
+    font-weight: 550;
+}
+
+.icon {
+    width: 64px;
+    height: 64px;
+    text-align: center;
+    position: absolute;
+    background-color: teal;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    left: calc(50% - 32px);
+    bottom: -30px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-card {
+    cursor: pointer;
+    font-size: 'Varela Round', sans-serif;
+}
+
+.admin-card h5 {
+    color: #504f4f;
+}
+
+.blogNum,
+.userNum {
+    color: #021843;
+    font-weight: 600;
+}
+
+.admin-card i {
+    font-size: 28px;
+    line-height: 0;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.admin-card a {
+    text-decoration: none;
+}
+
+.admin-card:hover {
+    background-color: rgb(253, 245, 229);
+    width: 98%;
+    height: 99%;
+}
+
+.admin-card:hover .icon {
+    background-color: #fff;
+}
+
+.admin-card:hover i {
+    color: teal;
+}

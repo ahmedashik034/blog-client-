@@ -1,0 +1,112 @@
+.top {
+    background-color: white;
+    font-family: 'Josefin Sans', sans-serif;
+    z-index: 999;
+}
+
+.topLeft,
+.topRight {
+    flex: 3;
+}
+
+.topCenter {
+    flex: 6;
+}
+
+.topList {
+    list-style: none;
+}
+
+.appLogo {
+    font-size: 35px;
+    color: #021843;
+}
+
+.logoDot {
+    font-size: 48px;
+    color: teal;
+
+}
+
+.topList a {
+    text-decoration: none;
+    color: #313131;
+}
+
+.topListItem {
+
+    font-size: 20px;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+.listmargin {
+    margin-right: 50px;
+}
+
+.topIcon {
+    font-size: 20px;
+    margin-right: 10px;
+    color: #444;
+    cursor: pointer;
+}
+
+.topImg {
+    height: 45px;
+    width: 45px;
+    border-radius: 50px;
+    object-fit: cover;
+}
+
+.topSearchIcon {
+    font-size: 20px;
+    color: #666;
+    cursor: pointer;
+    margin-left: 15px;
+
+}
+
+.topSearchIcon:hover {
+    font-size: 22px;
+}
+
+.topListItem:hover {
+    color: rgb(1, 92, 92);
+}
+
+.dropDownBtn {
+    font-size: 20px;
+    border: 0;
+}
+
+.modal-90w {
+    width: 90%;
+}
+
+.navLoginBtn,
+.navLogoutBtn {
+    border-radius: 8px;
+    padding: 8px 15px;
+    font-size: 18px;
+    transition: 0.5s;
+    color: #fff;
+    background: teal;
+    box-shadow: 0px 5px 30px rgba(65, 84, 241, 0.4);
+}
+
+.searchButton {
+    color: white;
+    background-color: teal;
+}
+
+.searchButton:hover {
+    color: teal;
+    background-color: white;
+    border: 1px solid teal;
+}
+
+@media (max-width: 950px) {
+    .topListItem {
+        font-size: 16px;
+    }
+}

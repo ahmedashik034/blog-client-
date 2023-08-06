@@ -1,0 +1,65 @@
+.writeImg {
+    width: 70vw;
+    height: 250px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.writeFormGroup {
+    width: 70vw;
+}
+
+.selectField:focus {
+    outline: none;
+}
+
+.writeIcon {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 2px solid;
+    font-size: 20px;
+    color: teal;
+    cursor: pointer;
+}
+
+.writeInput {
+    font-size: 30px;
+    border: none;
+    width: 70vw;
+}
+
+.writeInput:focus {
+    outline: none;
+}
+
+.selectField {
+    cursor: pointer;
+}
+
+.btn-publish {
+    font-family: 'Josefin Sans', sans-serif;
+    margin-top: 30px;
+    line-height: 0;
+    border-radius: 4px;
+    transition: 0.5s;
+    color: #fff;
+    background: teal;
+    box-shadow: 0px 5px 30px rgba(65, 84, 241, 0.4);
+}
+
+.btn-publish span {
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.btn-publish i {
+    margin-left: 5px;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.btn-publish:hover i {
+    transform: translateX(5px);
+}

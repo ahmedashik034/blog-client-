@@ -1,0 +1,21 @@
+.userPp{
+    width: 150px;
+    height: 150px;
+}
+.profileInfo{
+    border-bottom: 2px solid teal;
+}
+.infoMailIcon{
+    font-size: 22px;
+    color: teal;
+}
+.infoName{
+    font-size: 30px;
+    color: #021843;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 500;
+}
+.infoMail{
+    font-size: 18px;
+    color: #504f4f;
+}

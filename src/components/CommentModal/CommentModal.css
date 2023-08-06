@@ -1,0 +1,17 @@
+.anonymousCommentBtn,
+.anonymousCommentSubmit {
+    color: white;
+    background-color: teal;
+}
+
+.anonymousCommentBtn:hover {
+    color: teal;
+    background-color: white;
+    border: 2px solid teal;
+}
+
+.anonymousCommentSubmit:hover {
+    color: teal;
+    background-color: white;
+    border: 2px solid teal;
+}

@@ -1,0 +1,25 @@
+.register {
+    font-family: 'Lora', serif;
+    height: calc(100vh - 50px);
+    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5)), url(../../images/img-three.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.registerForm{
+    width: 25%;
+}
+.registerTitle{
+    font-size: 50px;
+}
+.registerLoginBtn{
+    background-color: lightcoral;
+}
+.registerBtn{
+    background-color: teal;
+}
+@media screen and (max-width: 800px) {
+    .registerForm{
+        width: 70%;
+        height: 70%;
+    }
+}
