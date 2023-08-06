@@ -15,7 +15,7 @@ const Post = ({ post }) => {
 
         // navigate('/allBlogs');
         getData(
-          `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?category=${postCat}`
+          `https://bloge-server.vercel.app/api/v1/blogs?category=${postCat}`
         );
     }
     const content = post?.post;

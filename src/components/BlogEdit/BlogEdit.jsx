@@ -24,7 +24,7 @@ const BlogEdit = () => {
     useEffect(() => {
       console.log("Getting data...");
       getData(
-        `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`
+        `https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`
       );
     }, []);
 
@@ -85,7 +85,7 @@ const BlogEdit = () => {
       console.log(blogData);
       try {
         const response = await axios.patch(
-          `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`,
+          `https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`,
           blogData
         );
         if (response.status === 200) {

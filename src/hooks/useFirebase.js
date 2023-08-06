@@ -47,7 +47,7 @@ const useFirebase = (location) => {
           console.log(result.user);
           axios
             .get(
-              `https://bloge-server-devsobuj910.vercel.app/api/v1/users?email=${result.user?.email}`
+              `https://bloge-server.vercel.app/api/v1/users?email=${result.user?.email}`
             )
             .then(res => {
               console.log(res);
@@ -171,7 +171,7 @@ const useFirebase = (location) => {
           // console.log(user);
           axios
             .get(
-              `https://bloge-server-devsobuj910.vercel.app/api/v1/users?email=${user?.email}`
+              `https://bloge-server.vercel.app/api/v1/users?email=${user?.email}`
             )
             .then(res => {
               const resData = res.data[0];

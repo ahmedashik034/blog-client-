@@ -14,7 +14,7 @@ const AdminUsers = () => {
     const { data, getData, error, loading, patchData, deleteData, success } = useFetch();
     useEffect(() => {
       getData(
-        "https://bloge-server-devsobuj910.vercel.app/api/v1/users?role=user"
+        "https://bloge-server.vercel.app/api/v1/users?role=user"
       );
     }, []);
 
@@ -37,7 +37,7 @@ const AdminUsers = () => {
       }).then(willDelete => {
         if (willDelete) {
           deleteData(
-            `https://bloge-server-devsobuj910.vercel.app/api/v1/users?_id=${userId}`
+            `https://bloge-server.vercel.app/api/v1/users?_id=${userId}`
           );
           swal("Poof! The user has been removed!", {
             icon: "success",

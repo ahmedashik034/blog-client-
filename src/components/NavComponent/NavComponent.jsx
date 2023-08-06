@@ -14,7 +14,7 @@ function NavComponent() {
 
   if (user?.email) {
     getData(
-      `https://bloge-server-devsobuj910.vercel.app/api/v1/users?email=${user?.email}`
+      `https://bloge-server.vercel.app/api/v1/users?email=${user?.email}`
     );
   }
   // const handleSearch = async () => {
@@ -23,7 +23,7 @@ function NavComponent() {
 
   //     // navigate('/allBlogs');
   //     await axios
-  //         .get(`https://bloge-server-devsobuj910.vercel.app/api/v1/blogs`)
+  //         .get(`https://bloge-server.vercel.app/api/v1/blogs`)
   //         .then((res) => {
   //             const resData = res.data;
   //             //    console.log(resData)

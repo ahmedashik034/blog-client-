@@ -19,7 +19,7 @@ const UserProfile = () => {
     if (user?.email) {
       axios
         .get(
-          `https://bloge-server-devsobuj910.vercel.app/api/v1/users?_id=${userId}`
+          `https://bloge-server.vercel.app/api/v1/users?_id=${userId}`
         )
         .then(res => {
           const resData = res.data[0];
@@ -32,7 +32,7 @@ const UserProfile = () => {
 
     if (user?.email) {
       getData(
-        `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?email=${userDetail?.email}`
+        `https://bloge-server.vercel.app/api/v1/blogs?email=${userDetail?.email}`
       );
     }
     //   console.log(userDetail);

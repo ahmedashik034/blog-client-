@@ -43,7 +43,7 @@ const Register = () => {
 
                     const userData = { name, email };
                     const userUpload = postData(
-                      "https://bloge-server-devsobuj910.vercel.app/api/v1/users",
+                      "https://bloge-server.vercel.app/api/v1/users",
                       userData
                     );
 

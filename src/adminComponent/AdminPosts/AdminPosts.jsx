@@ -24,7 +24,7 @@ const AdminPosts = () => {
     //
     const { data, getData, error, dataLoading, patchData, deleteData, success } = useFetch();
     useEffect(() => {
-      getData("https://bloge-server-devsobuj910.vercel.app/api/v1/blogs");
+      getData("https://bloge-server.vercel.app/api/v1/blogs");
     }, []);
     // console.log(data);
     const handleBlogDelete = postId => {
@@ -37,7 +37,7 @@ const AdminPosts = () => {
       }).then(willDelete => {
         if (willDelete) {
           deleteData(
-            `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`
+            `https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`
           );
           swal("Poof! Your blog has been deleted!", {
             icon: "success",
@@ -75,7 +75,7 @@ const AdminPosts = () => {
 
       axios
         .get(
-          `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?toDate=${toDate}&fromDate=${fromDate}`
+          `https://bloge-server.vercel.app/api/v1/blogs?toDate=${toDate}&fromDate=${fromDate}`
         )
 
         .then(res => {

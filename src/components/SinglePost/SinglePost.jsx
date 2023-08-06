@@ -23,12 +23,12 @@ const SinglePost = () => {
     const handleCategoryClick = postCat => {
       // navigate('/allBlogs');
       getData(
-        `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?category=${postCat}`
+        `https://bloge-server.vercel.app/api/v1/blogs?category=${postCat}`
       );
     };
     useEffect(() => {
       getData(
-        `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`
+        `https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`
       );
     }, []);
     // console.log(comments);
@@ -36,7 +36,7 @@ const SinglePost = () => {
     if (user?.email) {
       axios
         .get(
-          `https://bloge-server-devsobuj910.vercel.app/api/v1/users?email=${user?.email}`
+          `https://bloge-server.vercel.app/api/v1/users?email=${user?.email}`
         )
         .then(res => {
           const resData = res.data[0];
@@ -73,7 +73,7 @@ const SinglePost = () => {
       if (!like?.includes(email)) {
         like?.push(email);
         await patchData(
-          `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`,
+          `https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`,
           {
             like_count: like,
           }
@@ -81,7 +81,7 @@ const SinglePost = () => {
       } else {
         const newLike = like?.filter(likeItem => likeItem !== email);
         await patchData(
-          `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`,
+          `https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`,
           {
             like_count: newLike,
           }
@@ -93,7 +93,7 @@ const SinglePost = () => {
           disLikeItem => disLikeItem !== email
         );
         await patchData(
-          `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`,
+          `https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`,
           {
             dislike_count: newDisLike,
           }
@@ -108,7 +108,7 @@ const SinglePost = () => {
       if (!disLike?.includes(email)) {
         disLike?.push(email);
         await patchData(
-          `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`,
+          `https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`,
           {
             dislike_count: disLike,
           }
@@ -118,7 +118,7 @@ const SinglePost = () => {
           disLikeItem => disLikeItem !== email
         );
         await patchData(
-          `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`,
+          `https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`,
           {
             dislike_count: newDisLike,
           }
@@ -128,7 +128,7 @@ const SinglePost = () => {
       if (like?.includes(email)) {
         const newLike = like?.filter(likeItem => likeItem !== email);
         await patchData(
-          `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`,
+          `https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`,
           {
             like_count: newLike,
           }
@@ -147,7 +147,7 @@ const SinglePost = () => {
       }).then(willDelete => {
         if (willDelete) {
           deleteData(
-            `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`
+            `https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`
           );
           swal("Poof! Your blog has been deleted!", {
             icon: "success",
@@ -173,7 +173,7 @@ const SinglePost = () => {
       };
       // console.log(userCommentData);
       patchData(
-        `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`,
+        `https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`,
         userCommentData
       );
 

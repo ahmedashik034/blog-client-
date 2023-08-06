@@ -19,7 +19,7 @@ const Settings = () => {
 
     if (user?.email) {
       getData(
-        `https://bloge-server-devsobuj910.vercel.app/api/v1/users?email=${user?.email}`
+        `https://bloge-server.vercel.app/api/v1/users?email=${user?.email}`
       );
     }
     // console.log(data[0]);
@@ -60,7 +60,7 @@ const Settings = () => {
       console.log(updatedUsertData);
       if (user?.email) {
         patchData(
-          `https://bloge-server-devsobuj910.vercel.app/api/v1/users?email=${user?.email}`,
+          `https://bloge-server.vercel.app/api/v1/users?email=${user?.email}`,
           updatedUsertData
         );
       }
@@ -83,7 +83,7 @@ const Settings = () => {
       const deleteText = deleteUserRef.current.value;
       if (deleteText === "DELETE") {
         await deleteData(
-          `https://bloge-server-devsobuj910.vercel.app/api/v1/users?email=${user?.email}`
+          `https://bloge-server.vercel.app/api/v1/users?email=${user?.email}`
         );
         await Swal.fire("Your Account is Deleted!", "success");
 

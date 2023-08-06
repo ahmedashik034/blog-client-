@@ -31,7 +31,7 @@ function CommentModal({ data }) {
         };
         // console.log(commentData);
         patchData(
-          `https://bloge-server-devsobuj910.vercel.app/api/v1/blogs?_id=${postId}`,
+          `https://bloge-server.vercel.app/api/v1/blogs?_id=${postId}`,
           commentData
         );
         modalEmailRef.current.value = "";
